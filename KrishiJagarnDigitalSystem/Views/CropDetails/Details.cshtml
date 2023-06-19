@@ -1,0 +1,42 @@
+﻿@model KrishiJagarnDigitalSystem.Models.CropDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CropDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CropName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropVariety)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropVariety)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropSeasion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropSeasion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KrishiModelStoreContainer" CdmEntityContainer="KrishiEntities">
+    <EntitySetMapping Name="CropDetails">
+      <EntityTypeMapping TypeName="KrishiModel.CropDetail">
+        <MappingFragment StoreEntitySet="CropDetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CropName" ColumnName="CropName" />
+          <ScalarProperty Name="CropVariety" ColumnName="CropVariety" />
+          <ScalarProperty Name="CropSeasion" ColumnName="CropSeasion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CropePriceDetails">
+      <EntityTypeMapping TypeName="KrishiModel.CropePriceDetail">
+        <MappingFragment StoreEntitySet="CropePriceDetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="SellingMandiName" ColumnName="SellingMandiName" />
+          <ScalarProperty Name="CropePrice" ColumnName="CropePrice" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormerDetails">
+      <EntityTypeMapping TypeName="KrishiModel.FormerDetail">
+        <MappingFragment StoreEntitySet="FormerDetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Crope_id" ColumnName="Crope_id" />
+          <ScalarProperty Name="Price_id" ColumnName="Price_id" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRegistrations">
+      <EntityTypeMapping TypeName="KrishiModel.UserRegistration">
+        <MappingFragment StoreEntitySet="UserRegistration">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email_id" ColumnName="Email_id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Contect_No" ColumnName="Contect_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

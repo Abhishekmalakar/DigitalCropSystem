@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KrishiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CropDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CropName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CropVariety" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CropSeasion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FormerDetails" Relationship="Self.FK_FormerDetails_CropDetails" FromRole="CropDetails" ToRole="FormerDetails" />
+  </EntityType>
+  <EntityType Name="CropePriceDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SellingMandiName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CropePrice" Type="Int32" />
+    <Property Name="TotalWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FormerDetails" Relationship="Self.FK_FormerDetails_CropePriceDetails" FromRole="CropePriceDetails" ToRole="FormerDetails" />
+  </EntityType>
+  <EntityType Name="FormerDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Crope_id" Type="Int32" />
+    <Property Name="Price_id" Type="Int32" />
+    <Property Name="Age" Type="Int32" />
+    <NavigationProperty Name="CropDetail" Relationship="Self.FK_FormerDetails_CropDetails" FromRole="FormerDetails" ToRole="CropDetails" />
+    <NavigationProperty Name="CropePriceDetail" Relationship="Self.FK_FormerDetails_CropePriceDetails" FromRole="FormerDetails" ToRole="CropePriceDetails" />
+  </EntityType>
+  <EntityType Name="UserRegistration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contect_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_FormerDetails_CropDetails">
+    <End Role="CropDetails" Type="Self.CropDetail" Multiplicity="0..1" />
+    <End Role="FormerDetails" Type="Self.FormerDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropDetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FormerDetails">
+        <PropertyRef Name="Crope_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormerDetails_CropePriceDetails">
+    <End Role="CropePriceDetails" Type="Self.CropePriceDetail" Multiplicity="0..1" />
+    <End Role="FormerDetails" Type="Self.FormerDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropePriceDetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FormerDetails">
+        <PropertyRef Name="Price_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KrishiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CropDetails" EntityType="Self.CropDetail" />
+    <EntitySet Name="CropePriceDetails" EntityType="Self.CropePriceDetail" />
+    <EntitySet Name="FormerDetails" EntityType="Self.FormerDetail" />
+    <EntitySet Name="UserRegistrations" EntityType="Self.UserRegistration" />
+    <AssociationSet Name="FK_FormerDetails_CropDetails" Association="Self.FK_FormerDetails_CropDetails">
+      <End Role="CropDetails" EntitySet="CropDetails" />
+      <End Role="FormerDetails" EntitySet="FormerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormerDetails_CropePriceDetails" Association="Self.FK_FormerDetails_CropePriceDetails">
+      <End Role="CropePriceDetails" EntitySet="CropePriceDetails" />
+      <End Role="FormerDetails" EntitySet="FormerDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

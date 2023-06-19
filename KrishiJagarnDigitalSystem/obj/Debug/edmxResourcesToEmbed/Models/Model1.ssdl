@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KrishiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CropDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CropName" Type="varchar" MaxLength="50" />
+    <Property Name="CropVariety" Type="varchar" MaxLength="50" />
+    <Property Name="CropSeasion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CropePriceDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SellingMandiName" Type="varchar" MaxLength="50" />
+    <Property Name="CropePrice" Type="int" />
+    <Property Name="TotalWeight" Type="varchar" MaxLength="50" />
+    <Property Name="Year" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FormerDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Crope_id" Type="int" />
+    <Property Name="Price_id" Type="int" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <EntityType Name="UserRegistration">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Email_id" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Contect_No" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_FormerDetails_CropDetails">
+    <End Role="CropDetails" Type="Self.CropDetails" Multiplicity="0..1" />
+    <End Role="FormerDetails" Type="Self.FormerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropDetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FormerDetails">
+        <PropertyRef Name="Crope_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormerDetails_CropePriceDetails">
+    <End Role="CropePriceDetails" Type="Self.CropePriceDetails" Multiplicity="0..1" />
+    <End Role="FormerDetails" Type="Self.FormerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CropePriceDetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FormerDetails">
+        <PropertyRef Name="Price_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KrishiModelStoreContainer">
+    <EntitySet Name="CropDetails" EntityType="Self.CropDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CropePriceDetails" EntityType="Self.CropePriceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormerDetails" EntityType="Self.FormerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRegistration" EntityType="Self.UserRegistration" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FormerDetails_CropDetails" Association="Self.FK_FormerDetails_CropDetails">
+      <End Role="CropDetails" EntitySet="CropDetails" />
+      <End Role="FormerDetails" EntitySet="FormerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormerDetails_CropePriceDetails" Association="Self.FK_FormerDetails_CropePriceDetails">
+      <End Role="CropePriceDetails" EntitySet="CropePriceDetails" />
+      <End Role="FormerDetails" EntitySet="FormerDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

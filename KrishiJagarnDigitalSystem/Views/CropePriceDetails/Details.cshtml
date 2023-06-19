@@ -1,0 +1,50 @@
+﻿@model KrishiJagarnDigitalSystem.Models.CropePriceDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CropePriceDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SellingMandiName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellingMandiName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CropePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CropePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
